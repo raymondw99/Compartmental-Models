@@ -73,5 +73,3 @@ for rho in rho_list:
     graph(rho, 4, T1)
 plt.show() 
 
-plt.show()
-
