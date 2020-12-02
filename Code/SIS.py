@@ -22,21 +22,24 @@ I1 = []
 SA = []
 IA = []
 
+# Time vector
 T = np.linspace(0, 300, 3000000)
 
+# Differential relations
 def dSdt(S, I, beta, gamma):
     return -beta * (S*I)/N + gamma*I
 
 def dIdt(S, I, beta, gamma):
     return beta * (S*I)/N - gamma *I
 
+# Analytical solution
 def I_analytical(t):
     I_inf = (1-gamma/beta)*N
     xi = beta - gamma
     V = I_inf/I0 - 1
     return I_inf/(1+V*exp(-xi*t))
 
-    
+# Fourth-order Runge-Kutta algorithm 
 def RK4(h, S0, I0, i):
     for day in range(0,len(T)):
         k1S = dSdt(S0, I0, beta, gamma)*h
@@ -73,7 +76,6 @@ S2, I2 = result.T
 
 def cases():
     RK4(0.1, S0, I0, 0)
-
     for i in range(0, len(T)):
         IA.append(I_analytical(T[i]))
         SA.append(N-I_analytical(T[i]))
@@ -83,8 +85,7 @@ def cases():
 
     ax.plot(T, S1, 'tab:cyan', label='Susceptible - RK4')
     ax.plot(T, I1, 'tab:red', label='Infected - RK4')
-
-
+    
     #ax.plot(T, S2, 'tab:cyan', label='Susceptible - odeint')
     #ax.plot(T, I2, 'tab:blue', label='Infected - odeint')
 
@@ -96,11 +97,9 @@ def cases():
     #plt.ticklabel_format(axis='y', style='sci', scilimits=(6,6))
     legend = ax.legend()
     legend.get_frame().set_alpha(0.5)
-
     plt.show()
 
-def error():
-    
+def error():   
     S3 = []
     I3 = []
     RK4(0.0001, S0, I0, 1)
@@ -108,12 +107,9 @@ def error():
     for i in range(0, len(T)):
         I3.append(I2[i]-I_analytical(T[i]))
         S3.append(S2[i]-N+I_analytical(T[i]))
-
-    
-    # Plot the data on three separate curves for S(t), I(t) and R(t)
-    fig, ax = plt.subplots(1,1)
-
         
+    # Plot the data on three separate curves for S(t), I(t) and R(t)
+    fig, ax = plt.subplots(1,1)        
     ax.plot(T, [abs(i) for i in S1], 'tab:cyan', label='Susceptible')
     ax.plot(T, [abs(i) for i in I1], 'tab:blue', label='Infected')
     #ax.plot(T, [abs(i) for i in S3], 'tab:cyan', label='Susceptible - odeint')
@@ -125,8 +121,7 @@ def error():
     legend = ax.legend(loc='center right',fontsize = 17)
     legend.get_frame().set_alpha(0.5)
     plt.show()
-
+    
 #cases()
 error()
-
 
