@@ -22,6 +22,7 @@ I1 = []
 R1 = []
 T = np.linspace(0,500,500)
 
+# Differential relations
 def dSdt(S, I, beta):
     return -beta * (S*I/N)
 
@@ -31,6 +32,7 @@ def dIdt(S, I, beta, gamma):
 def dRdt(I,gamma):
     return gamma * I
 
+# Fourth-order Runge-Kutta algorithm
 def RK4(h, days, S0, I0, R0):
     for day in range(0,days):
         k1S = dSdt(S0, I0, beta)*h
