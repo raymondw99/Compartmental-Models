@@ -19,8 +19,10 @@ beta = R_0*gamma
 S1 = []
 I1 = []
 R1 = []
+# Time vector
 T = np.linspace(0,500,500)
 
+# Differential relations
 def dSdt(S, I, beta):
     return -beta * (S*I/N)
 
@@ -32,7 +34,6 @@ def dRdt(I,gamma):
 
 
 # The SIR model differential equations.
-
 def SIR(initial_conditions, t, N, beta, gamma):
     S2, I2, R2 = initial_conditions
     dS = dSdt(S2, I2, beta)
