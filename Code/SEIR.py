@@ -25,6 +25,7 @@ I1 = []
 R1 = []
 T = np.linspace(0,1000,1000)
 
+# Differential relations
 def dSdt(S, I, beta):
     return -beta * (S*I/N)
 
@@ -57,7 +58,6 @@ fig, ax = plt.subplots(1,1)
 #ax.plot(T, S1, label='Susceptible - RK4')
 #ax.plot(T, I1, label='Infected - RK4')
 #ax.plot(T, R1, label='Recovered - RK4')
-
 
 ax.plot(T, S2/1000000, label='Susceptible')
 ax.plot(T, E2/1000000, label='Exposed')
