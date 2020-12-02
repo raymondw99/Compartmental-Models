@@ -19,12 +19,14 @@ beta = R_0*gamma
 alpha = 1/5.2
 # A grid of time points (in days)
 
+# Initiate vectors for variables
 S1 = []
 E1 = []
 I1 = []
 R1 = []
 T = np.linspace(0,1000,1000)
 
+# Differential relations
 def dSdt(S, I, beta):
     return -beta * (S*I/N)
 
@@ -49,8 +51,6 @@ def SIR(initial_conditions, t, N, alpha, beta, gamma):
 
 result = odeint(SIR, initial_conditions, T, args=(N,alpha, beta,gamma))
 S2, E2, I2, R2 = result.T
-
-    
 
 # Plot the data on three separate curves for S(t), I(t) and R(t)
 fig, ax = plt.subplots(1,1)
