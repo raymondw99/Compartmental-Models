@@ -5,4 +5,4 @@ COVID-19 disease.
 
 Implemented as a final project in SI1336 Simulation and Modelling.
 
-© Raymond Wang 2020
+© Raymond Wang 2020 
