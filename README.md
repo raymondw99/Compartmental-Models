@@ -1,4 +1,4 @@
-# SI1336-Final-Project
+# Compartmental models in epidemiology
 Analysis of compartmental models in
 simulating the progression of the
 COVID-19 disease.
